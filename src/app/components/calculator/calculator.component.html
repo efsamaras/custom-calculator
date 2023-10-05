@@ -1,0 +1,17 @@
+<div class="results">
+    <div id="result">{{ result }}</div>
+    <div id="error-message">{{ errorMessage }}</div>
+</div>
+
+<div class="calculator">
+    <input
+        type="text"
+        id="expression-input"
+        placeholder="Enter an expression"
+        (input)="onInputChanged($event)"
+        [value]="expression"
+    />
+    <ng-container *ngFor="let button of buttons">
+        <button (click)="onButtonClicked(button)">{{ button }}</button>
+    </ng-container>
+</div>

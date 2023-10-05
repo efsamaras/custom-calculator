@@ -1,0 +1,35 @@
+.results {
+    height: 25px;
+    padding: 10px 0;
+}
+
+#result {
+    font-size: 20px;
+    color: #007bff;
+    padding: 0 25px;
+}
+
+#error-message {
+    color: red;
+    padding: 0 25px;
+}
+
+.calculator {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#expression-input {
+    width: 100%;
+    padding: 15px;
+    margin: 0 25px 5px 25px;
+    font-size: 20px;
+}
+
+.calculator button {
+    width: 20%;
+    padding: 10px;
+    margin: 5px;
+    font-size: 18px;
+}
