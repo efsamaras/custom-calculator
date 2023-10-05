@@ -34,6 +34,7 @@ export class CalculatorComponent {
         '.',
         'C',
     ];
+    public historyList: { expression: string; result: string }[] = [];
 
     constructor(
         private evaluationService: EvaluationService,
@@ -77,6 +78,7 @@ export class CalculatorComponent {
             try {
                 const result = this.evaluationService.evaluate(this.expression);
                 this.result = `Result: ${result}`;
+                this.updateHistory(result);
             } catch (err) {
                 this.errorMessage = err as string;
             }
@@ -101,6 +103,13 @@ export class CalculatorComponent {
                     lastNumber +
                     ')';
             }
+        }
+    }
+
+    private updateHistory(result: string) {
+        this.historyList.push({ expression: this.expression, result });
+        if (this.historyList.length > 5) {
+            this.historyList.shift();
         }
     }
 }

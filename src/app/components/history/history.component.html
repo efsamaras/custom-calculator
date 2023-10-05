@@ -1,0 +1,6 @@
+<div id="history">
+    <h3 *ngIf="historyList.length">History</h3>
+    <ul>
+        <li *ngFor="let entry of historyList"> {{ entry.expression }} = {{ entry.result }} </li>
+    </ul>
+</div>
