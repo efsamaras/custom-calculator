@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ValidationService } from '../../services/validation.service';
 import { EvaluationService } from '../../services/evaluation.service';
 import { validSignedNumberRegex } from '../../helpers/regex.helper';
+import { RandomService } from '../../services/random.service';
 
 @Component({
     selector: 'app-calculator',
@@ -38,7 +39,8 @@ export class CalculatorComponent {
 
     constructor(
         private evaluationService: EvaluationService,
-        private validationService: ValidationService
+        private validationService: ValidationService,
+        private randomService: RandomService
     ) {}
 
     onInputChanged(event: Event) {
@@ -52,7 +54,10 @@ export class CalculatorComponent {
                 this.expression = '';
                 break;
             case 'RAND':
-                //TODO
+                this.randomService.generateRandomNumber().then((randomNumber) => {
+                    this.updateInputElement(randomNumber);
+                    this.calculate();
+                });
                 break;
             case 'sin':
             case 'cos':
