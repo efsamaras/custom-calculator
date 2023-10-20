@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ValidationService } from '../../services/validation.service';
 import { EvaluationService } from '../../services/evaluation.service';
 import { validSignedNumberRegex } from '../../helpers/regex.helper';
@@ -10,6 +10,8 @@ import { RandomService } from '../../services/random.service';
     styleUrls: ['./calculator.component.scss'],
 })
 export class CalculatorComponent {
+    @Output() expressionCalculated = new EventEmitter<{ expression: string; result: string }>();
+
     public expression: string = '';
     public errorMessage: string = '';
     public result: string = '';
@@ -35,7 +37,6 @@ export class CalculatorComponent {
         '.',
         'C',
     ];
-    public historyList: { expression: string; result: string }[] = [];
 
     constructor(
         private evaluationService: EvaluationService,
@@ -83,7 +84,7 @@ export class CalculatorComponent {
             try {
                 const result = this.evaluationService.evaluate(this.expression);
                 this.result = `Result: ${result}`;
-                this.updateHistory(result);
+                this.expressionCalculated.emit({ expression: this.expression, result });
             } catch (err) {
                 this.errorMessage = err as string;
             }
@@ -108,13 +109,6 @@ export class CalculatorComponent {
                     lastNumber +
                     ')';
             }
-        }
-    }
-
-    private updateHistory(result: string) {
-        this.historyList.push({ expression: this.expression, result });
-        if (this.historyList.length > 5) {
-            this.historyList.shift();
         }
     }
 }

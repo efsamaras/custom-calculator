@@ -1,5 +1,5 @@
 <div class="content">
     <h1>Custom Calculator</h1>
-    <app-calculator></app-calculator>
-    <app-history></app-history>
+    <app-calculator (expressionCalculated)="onCalculation($event)"></app-calculator>
+    <app-history [historyList]="historyList"></app-history>
 </div>
