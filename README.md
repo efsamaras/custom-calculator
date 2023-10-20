@@ -1,27 +1,59 @@
-# SuprNgCalculator
+# Custom Calculator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4.
+Custom Calculator is a sample Angular-based application that allows users to input and evaluate mathematical expressions. It includes validation, history tracking, and a unique RAND operator.
 
-## Development server
+## Table of Contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+-   [Features](#features)
+-   [Assumptions](#assumptions)
+-   [Prerequisites](#prerequisites)
+-   [Installation](#installation)
+-   [Usage](#usage)
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The application includes the following key features:
 
-## Build
+-   **Validation:** The expression is validated in real-time, with error messages displayed for invalid inputs.
+-   **Evaluation:** Computed results are shown in the output area, supporting basic arithmetic operations (+, -, \*, /) and trigonometric functions (sin, cos, tan).
+-   **History:** The last 5 expressions and their results are displayed in the history section.
+-   **RAND operator** Introducing a RAND operand that generates random numbers from [random.org/integers](https://www.random.org/integers)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Assumptions
 
-## Running unit tests
+-   **Whitespace Handling:** Whitespaces in the input expressions are ignored during validation and evaluation. The calculator assumes that users may include or omit spaces in expressions for readability, and it does not affect the correctness of the calculations.
+-   **Equals Operator Omission:** The calculator omits the equals operator (`=`) because it is not unnecessary.
+-   **Trigonometric Functions Usage:** When the user presses a trigonometric function button, the calculator assumes that the last given number is intended as the argument for the trigonometric function. If there is no preceding number, pressing a trigonometric function button has no effect.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Prerequisites
 
-## Running end-to-end tests
+Before you begin, ensure you have met the following requirements:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+-   Node.js and npm installed on your system. This project requires Node.js version `^16.14.0 || ^18.10.0`
+-   Angular CLI installed (`npm install -g @angular/cli`).
 
-## Further help
+## Installation
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To set up the project locally, follow these steps:
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/efsamaras/custom-calculator.git
+    ```
+
+2. Install project dependencies:
+
+    ```bash
+     npm install
+    ```
+
+## Usage
+
+To start the development server, run:
+
+```bash
+npm run start
+```
+
+Access the application at http://localhost:4200 in your web browser.
