@@ -1,5 +1,5 @@
 {
-    "name": "supr-ng-calculator",
+    "name": "custom-calculator",
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
